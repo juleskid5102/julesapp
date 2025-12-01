@@ -1,0 +1,72 @@
+<div class="flex justify-between items-center mb-4">
+  <button id="add-category-btn" class="btn btn-main">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1" viewBox="0 0 20 20"
+      fill="currentColor">
+      <path fill-rule="evenodd"
+        d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+    </svg>
+    Thêm danh mục
+  </button>
+</div>
+
+<div class="bg-white p-6 rounded-lg shadow-md">
+  <div class="overflow-x-auto">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th scope="col" class="px-6 py-3 text-left font-thin text-muted uppercase tracking-wider">
+            Tên danh mục</th>
+          <th scope="col" class="px-6 py-3 text-left font-thin text-muted uppercase tracking-wider">ID (dùng
+            làm tag)</th>
+          <th scope="col" class="px-6 py-3 text-left font-thin text-muted uppercase tracking-wider">Icon
+            (Preview)</th>
+          <th scope="col" class="px-6 py-3 text-right font-thin text-muted uppercase tracking-wider">Hành động
+          </th>
+        </tr>
+      </thead>
+      <tbody id="categories-table-body" class="bg-white divide-y divide-gray-200">
+        <tr>
+          <td colspan="4" class="px-6 py-4 text-center font-thin text-primary">Đang tải dữ liệu...
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<dialog id="category-modal" class="p-0 rounded-lg shadow-xl w-full max-w-lg">
+  <form id="category-form" class="p-6 space-y-4">
+    <div class="flex justify-between items-center">
+      <h3 id="category-modal-title" class="font-bold text-primary">Thêm danh mục mới</h3>
+      <button type="button" id="close-category-modal-btn" class="text-gray-400 hover:text-gray-600">&times;</button>
+    </div>
+
+    <input type="hidden" id="category-is-editing">
+
+    <div>
+      <label for="category-id" class="block font-thin text-primary">ID (slug)</label>
+      <input type="text" id="category-id" class="mt-1 w-full p-2 border rounded-lg" required
+        placeholder="vd: thiet-ke, van-phong (không dấu, không cách)">
+      <p class="font-thin text-muted mt-1">ID này sẽ là Document ID và là 'tag' cho sản phẩm. Không thể đổi
+        sau khi tạo.</p>
+    </div>
+
+    <div>
+      <label for="category-name" class="block font-thin text-primary">Tên hiển thị</label>
+      <input type="text" id="category-name" class="mt-1 w-full p-2 border rounded-lg" required
+        placeholder="vd: Thiết kế - Đồ họa">
+    </div>
+
+    <div>
+      <label for="category-icon" class="block font-thin text-primary">Mã SVG Icon</label>
+      <textarea id="category-icon" rows="5" class="mt-1 w-full p-2 border rounded-lg font-mono text-sm"
+        placeholder="Dán toàn bộ thẻ <svg>...</svg> vào đây"></textarea>
+      <p class="font-thin text-muted mt-1">Icon này sẽ hiển thị ở sidebar trang chủ.</p>
+    </div>
+
+    <div class="flex justify-end gap-4 pt-4">
+      <button type="button" id="cancel-category-btn" class="btn btn-secondary">Hủy</button>
+      <button type="submit" id="save-category-btn" class="btn btn-main">Lưu danh mục</button>
+    </div>
+  </form>
+</dialog>

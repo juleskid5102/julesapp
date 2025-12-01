@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Phần Mềm - Jules Studio</title>
+    <link id="favicon-link" rel="icon" type="image/png" href="">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script type="module" src="/js/app.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="bg-background">
+
+    <header id="header-placeholder" class="top-0 z-9999 w-full shadow-sm"></header>
+
+    <main class="container mx-auto p-4 my-6" id="page-tools">
+        <div class="flex gap-4 mb-4">
+            <textarea id="search-input" class="flex-1 p-3 border rounded-lg shadow-sm focus:outline-none 
+                         bg-surface text-primary border-[var(--color-border)] 
+                         focus:ring-2 focus:ring-[var(--color-brandAccent)]" rows="3"
+                placeholder="Nhập tên phần mềm để tìm... (cách nhau bằng dấu phẩy)"></textarea>
+            <div class="flex flex-col gap-2">
+                <button id="search-btn" class="py-2 px-4 rounded-md font-bold btn-primary">
+                    <span>Tìm Kiếm</span>
+                </button>
+                <button id="add-software-btn" class="py-2 px-4 rounded-md font-bold btn-success">
+                    <span>Thêm Mới</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="flex justify-start space-x-2 mb-4">
+            <button class="filter-btn px-4 py-2 rounded-lg font-normal btn-secondary"
+                data-filter="windows">Windows</button>
+            <button class="filter-btn px-4 py-2 rounded-lg font-normal btn-secondary" data-filter="macos">macOS</button>
+            <button class="filter-btn px-4 py-2 rounded-lg font-normal btn-secondary"
+                data-filter="winget">Winget</button>
+            <button class="filter-btn px-4 py-2 rounded-lg font-normal btn-secondary" data-filter="common">Thông
+                dụng</button>
+        </div>
+
+        <!-- SỬA: Dùng var(--shadow-soft) thay vì var(--color-shadow) -->
+        <div class="bg-surface rounded-lg shadow-md overflow-x-auto"
+            style="border: 1px solid var(--color-border); box-shadow: 0 2px 6px var(--shadow-soft);">
+            <table class="w-full" id="software-table">
+                <thead class="bg-background">
+                    <tr>
+                        <th class="p-3 text-left font-bold text-secondary" style="width: 3%;">STT</th>
+                        <th class="p-3 text-center" style="width: 3%;"><input type="checkbox" id="select-all-checkbox"
+                                class="styled-checkbox"></th>
+                        <th class="p-3 text-left font-bold text-secondary sortable" data-sort="ten_phan_mem"
+                            style="width: 20%;">TÊN PHẦN MỀM</th>
+                        <th class="p-3 text-left font-bold text-secondary sortable" data-sort="loai_phan_mem"
+                            style="width: 10%;">LOẠI</th>
+                        <th class="p-3 text-left font-bold text-secondary sortable" data-sort="danh_muc"
+                            style="width: 10%;">DANH MỤC</th>
+                        <th class="p-3 text-left font-bold text-secondary" style="width: 17%;">
+                            LINK/LỆNH</th>
+                        <th class="p-3 text-left font-bold text-secondary" style="width: 16%;">
+                            HƯỚNG DẪN</th>
+                        <th class="p-3 text-left font-bold text-secondary sortable" data-sort="don_gia"
+                            style="width: 11%;">ĐƠN GIÁ (VNĐ)</th>
+                        <th class="p-3 text-left font-bold text-secondary" style="width: 10%;">
+                            HÀNH ĐỘNG</th>
+                    </tr>
+                </thead>
+                <tbody id="software-table-body">
+                    <tr>
+                        <td colspan="9" class="p-4 text-center font-normal text-muted">
+                            Đang tải dữ liệu từ Firebase...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="flex justify-between items-center mt-4">
+            <div class="flex space-x-2">
+                <button id="open-link-btn" class="py-2 px-4 rounded-md font-bold btn-secondary">Mở Link</button>
+                <button id="winget-btn" class="py-2 px-4 rounded-md font-bold btn-secondary">Winget</button>
+                <button id="delete-selected-btn" class="py-2 px-4 rounded-md font-bold btn-danger">Xóa Mục Đã
+                    Chọn</button>
+            </div>
+            <div class="flex space-x-2">
+                <button id="quote-btn" class="py-2 px-4 rounded-md font-bold btn-secondary">Báo giá</button>
+            </div>
+        </div>
+    </main>
+
+
+    <div id="footer-placeholder"></div>
+    <div id="modal-container" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50"
+        aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    </div>
+
+    <!-- SỬA: Thay 'text-white' bằng 'text-inverse' -->
+    <div id="toast-container"
+        class="fixed bottom-5 right-5 z-[100] p-4 rounded-lg bg-success text-inverse shadow-lg opacity-0 transition-opacity duration-300">
+        <span id="toast-message"></span>
+    </div>
+
+</body>
+
+</html>

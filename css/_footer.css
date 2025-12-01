@@ -1,0 +1,104 @@
+/* =========================================================
+   FOOTER — GLASS AIRY JULES 2025
+   ========================================================= */
+
+.footer-container {
+    width: 100%;
+    padding: 2.25rem 1.5rem;
+    margin-top: 3rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    /* Glass Base Layer */
+    background: var(--surfaceGlass);
+    backdrop-filter: blur(var(--blurLight));
+    -webkit-backdrop-filter: blur(var(--blurLight));
+
+    /* Glass Border */
+    border-top: 1px solid var(--borderGlass);
+
+    /* Airy softness */
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        var(--shadowSoft);
+
+    border-radius: 24px 24px 0 0;
+    transition: all .25s ease;
+}
+
+/* ================================
+   FOOTER LINKS
+   ================================ */
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.6rem;
+    margin-bottom: 1.25rem;
+}
+
+.footer-link {
+    color: var(--textSecondary);
+    font-size: var(--fontThin-size);
+    font-weight: var(--fontThin-weight);
+    letter-spacing: var(--fontThin-tracking);
+    text-decoration: none;
+
+    transition: color .18s ease, opacity .18s ease;
+}
+
+.footer-link:hover {
+    color: var(--brandPrimary);
+    opacity: 1;
+}
+
+/* ================================
+   SOCIAL ICONS
+   ================================ */
+
+.footer-socials {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.footer-socials img {
+    width: 22px;
+    height: 22px;
+    opacity: 0.85;
+    transition: opacity .18s ease, transform .18s ease;
+}
+
+.footer-socials img:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* ================================
+   COPYRIGHT
+   ================================ */
+
+.footer-copyright {
+    color: var(--textMuted);
+    font-size: var(--fontThin-size);
+    margin: 0;
+    opacity: 0.85;
+}
+
+/* ================================
+   MOBILE OPTIMIZATION
+   ================================ */
+
+@media (max-width: 640px) {
+    .footer-container {
+        padding: 1.75rem 1.2rem;
+    }
+
+    .footer-links {
+        gap: 1.15rem;
+    }
+}

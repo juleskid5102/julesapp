@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hỗ trợ - Jules Studio</title>
+    <link id="favicon-link" rel="icon" type="image/png" href="">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script type="module" src="/js/app.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="bg-background">
+
+    <header id="header-placeholder" class="top-0 z-9999 w-full shadow-sm"></header>
+
+    <main id="page-hotro" class="container mx-auto p-4 my-6">
+        <h1 class="font-bold-lg text-brand">
+            Trung tâm Hỗ trợ
+        </h1>
+        <p class="font-thin text-secondary">Nội dung trang Hỗ trợ (ví dụ: Các câu hỏi thường gặp, hướng dẫn...) sẽ ở
+            đây.
+        </p>
+    </main>
+
+    <div id="toast-container"
+        class="fixed bottom-5 right-5 z-[100] p-4 rounded-lg text-inverse shadow-lg transition-opacity duration-300 opacity-0">
+        <span id="toast-message"></span>
+    </div>
+    <div id="footer-placeholder"></div>
+
+    <script type="module" src="/js/app.js"></script>
+</body>
+
+</html>

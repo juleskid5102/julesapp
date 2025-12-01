@@ -1,0 +1,255 @@
+/* =========================================================
+   PAGE: CATEGORY — 3-LAYER GLASS MODEL (AUTO-CALC GRID)
+   ========================================================= */
+
+/* --- LAYER 1: BACKGROUND --- */
+body {
+    background-image: linear-gradient(180deg, rgba(167, 139, 250, 0.06) 0%, transparent 40%);
+    background-repeat: no-repeat;
+    background-color: var(--color-background);
+    min-height: 100vh;
+}
+
+.page-container {
+    max-width: 1280px;
+    /* Giới hạn chiều rộng chuẩn */
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+
+/* --- LAYER 2: HEADER GLASS BLOCK --- */
+.category-header-panel {
+    position: relative;
+    background: var(--surfaceGlass);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border-radius: 16px;
+    border: 1px solid var(--borderGlass);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    padding: 24px 32px;
+    margin-bottom: 40px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.category-header-panel nav {
+    opacity: 0.8;
+}
+
+.category-header-panel h1 {
+    font-size: 28px;
+    color: var(--textBrand);
+    font-weight: 700;
+    margin: 0;
+}
+
+#category-filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+    padding-top: 20px;
+    border-top: 1px solid var(--borderGlassSoft);
+}
+
+.filter-chip {
+    background: transparent;
+    border: 1px solid var(--borderGlassSoft);
+    color: var(--textSecondary);
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 100px;
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-chip:hover,
+.filter-chip.active {
+    background: var(--surface);
+    border-color: var(--brandPrimaryLight);
+    color: var(--brandPrimary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+
+/* --- LAYER 3: PRODUCT STRIP GLASS --- */
+.product-strip-glass {
+    position: relative;
+    background: var(--surfaceGlass);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border-radius: 16px;
+    border: 1px solid var(--borderGlassSoft);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.04);
+    padding: 40px 0 80px 0;
+    width: 100%;
+}
+
+
+/* --- GRID LAYOUT (AUTO-FILL - MÁY TỰ TÍNH) --- */
+.category-product-grid {
+    display: grid;
+
+    /* Căn giữa khối nội dung -> Phần dư sẽ tự chia đều 2 bên (Margin) */
+    justify-content: center;
+
+    position: relative;
+    z-index: 1;
+    overflow: visible !important;
+    padding-bottom: 120px;
+}
+
+/* 1. Mặc định (Mobile): Tự tính theo size Mobile */
+.category-product-grid {
+    /* Tự động điền bao nhiêu thẻ 150px thì điền */
+    grid-template-columns: repeat(auto-fill, var(--card-w-mobile));
+    gap: 16px;
+}
+
+/* 2. Tablet (>=768px): Tự tính theo size Tablet */
+@media (min-width: 768px) {
+    .category-product-grid {
+        /* Tự động điền bao nhiêu thẻ 180px thì điền */
+        grid-template-columns: repeat(auto-fill, var(--card-w-tablet));
+        gap: 24px;
+    }
+}
+
+/* 3. Desktop (>=1024px): Tự tính theo size Desktop */
+/* Đây là đoạn quan trọng: Với container 1280px và card 240px, 
+   nó sẽ tự tính ra được 4 cột và tự căn giữa */
+@media (min-width: 1024px) {
+    .category-product-grid {
+        /* Tự động điền bao nhiêu thẻ 240px (hoặc 220px tùy biến) thì điền */
+        grid-template-columns: repeat(auto-fill, var(--card-w-desktop));
+
+        /* Gap cố định 32px */
+        gap: 45px;
+    }
+}
+
+
+/* --- OVERRIDE CARD STYLE (GIỮ KÍCH THƯỚC CỐ ĐỊNH) --- */
+.category-product-grid .jules-product-card {
+    /* Reset width/height để ăn theo biến global */
+    width: initial !important;
+    height: initial !important;
+
+    /* Ép dùng đúng biến kích thước tương ứng với breakpoint */
+    width: var(--card-w-mobile) !important;
+    height: var(--card-h-mobile) !important;
+
+    margin: 0 auto;
+    /* An toàn */
+}
+
+@media (min-width: 768px) {
+    .category-product-grid .jules-product-card {
+        width: var(--card-w-tablet) !important;
+        height: var(--card-h-tablet) !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .category-product-grid .jules-product-card {
+        width: var(--card-w-desktop) !important;
+        height: var(--card-h-desktop) !important;
+    }
+}
+
+/* Hover Z-index */
+.category-product-grid .jules-product-card:hover {
+    z-index: 100;
+}
+
+
+/* --- SKELETON LOADING --- */
+.product-card-airy-skeleton {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--borderGlassSoft);
+    border-radius: 16px;
+    overflow: hidden;
+
+    width: var(--card-w-mobile);
+    height: var(--card-h-mobile);
+}
+
+@media (min-width: 768px) {
+    .product-card-airy-skeleton {
+        width: var(--card-w-tablet);
+        height: var(--card-h-tablet);
+    }
+}
+
+@media (min-width: 1024px) {
+    .product-card-airy-skeleton {
+        width: var(--card-w-desktop);
+        height: var(--card-h-desktop);
+    }
+}
+
+/* --- TRẠNG THÁI --- */
+#no-products,
+#error-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 0;
+    color: var(--textSecondary);
+    font-weight: 300;
+    font-size: 16px;
+}
+
+/* =================================================
+   PAGINATION (PHÂN TRANG)
+   ================================================= */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 40px;
+    padding-bottom: 20px;
+}
+
+.pagination-btn {
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--borderGlassSoft);
+    border-radius: 10px;
+
+    color: var(--textSecondary);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pagination-btn:hover {
+    background: var(--surface);
+    color: var(--brandPrimary);
+    border-color: var(--brandPrimaryLight);
+    transform: translateY(-2px);
+}
+
+.pagination-btn.active {
+    background: var(--brandPrimary);
+    color: #fff;
+    border-color: var(--brandPrimary);
+    box-shadow: 0 4px 12px var(--brandPrimarySoft);
+    font-weight: 700;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}

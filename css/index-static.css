@@ -1,0 +1,211 @@
+/* =========================================================
+   INDEX STATIC LAYOUT — 3-LAYER MODEL (FINAL 2025)
+   Feature: Glass Fog Layer + Netflix Arrows Outside Banner
+   ========================================================= */
+
+/* --- 1. FIX LAYOUT (TÁCH HEADER & BODY) --- */
+body {
+    /* Header cao ~70px, thêm padding để tạo độ thoáng */
+    padding-top: 70px;
+    /* Layer 1: Background Gradient */
+    background: var(--background-gradient) !important;
+    min-height: 100vh;
+    color: var(--textPrimary);
+}
+
+.page-container {
+    padding-bottom: 60px;
+}
+
+/* --- 2. LAYER 2: GLASS FOG LAYER (Lớp sương mù nền) --- */
+.glass-fog-layer {
+   
+    /* Hiệu ứng kính mờ diện rộng [cite: 16, 84] */
+    background: var(--surfaceGlass);
+
+    /* Blur cực mạnh làm nền separator */
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+
+    /* Border very-soft để tách biệt với Layer 1 */
+    border: 1px solid var(--borderGlassSoft);
+
+    /* Bo góc lớn bao trùm */
+    border-radius: 8px;
+
+    /* Padding để tạo khoảng thở cho Layer 3 bên trong */
+    padding: 24px;
+
+    /* Shadow nhẹ để tách lớp Fog khỏi nền Body */
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+}
+
+/* --- 3. LAYER 3: FOREGROUND UI (SIDEBAR) --- */
+
+/* Style chung cho khối Glass nổi */
+.glass-panel {
+    /* Nền kính đậm hơn để nổi trên lớp Fog */
+    background: var(--surfaceGlassStrong);
+
+    
+    /* Shadow Jules đặc trưng: Sâu và Mềm [cite: 140] */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+
+    /* Bo góc lớn Jules 2025 */
+    border-radius: 24px;
+
+    /* Viền kính chuẩn */
+    border: 1px solid var(--borderGlass);
+
+    /* Layout */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Danh sách Sidebar */
+#sidebar-categories ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    /* Spacing Airy */
+}
+
+/* Item Sidebar */
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    /* Icon cách xa text */
+    padding: 10px 16px;
+    /* Button to dễ bấm */
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.2s ease-out;
+    /* Motion mềm */
+    border: 1px solid transparent;
+}
+
+.sidebar-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    opacity: 0.6;
+    transition: 0.2s;
+}
+
+.sidebar-text {
+    flex: 1;
+    font-size: 15px;
+    /* Chữ rõ ràng */
+    font-weight: 300;
+
+    /* fontThin [cite: 6] */
+    letter-spacing: -0.2px;
+    color: var(--textPrimary);
+}
+
+/* Hover Effect Sidebar */
+.sidebar-link:hover {
+    background: var(--surface);
+    /* Nổi bật hẳn lên */
+    border-color: var(--borderGlass);
+    transform: translateX(6px);
+    /* Motion dịch phải */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-link:hover .sidebar-icon {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px var(--brandPrimarySoft));
+    transform: scale(1.1);
+}
+
+.sidebar-link:hover .sidebar-text {
+    color: var(--brandPrimary);
+    font-weight: 450;
+    /* Đậm lên chút */
+}
+
+/* --- 4. LAYER 3: MAIN BANNER (THẮT EO ĐỂ CHỪA CHỖ CHO MŨI TÊN) --- */
+
+.main-banner {
+    position: relative;
+    /* QUAN TRỌNG: Tạo khoảng trống 2 bên (64px) để đặt nút điều hướng */
+    padding: 0 40px !important;
+    margin-left: 40px !important;
+    /* Cho phép mũi tên hiển thị ở vùng padding này */
+    overflow: visible !important;
+
+    /* Tắt border/background ở container cha này (chuyển vào trong slide) */
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.main-banner-swiper {
+    width: 100%;
+    height: 100%;
+    /* Cho phép bóng đổ của slide bên trong không bị cắt */
+    overflow: visible !important;
+}
+
+/* --- 4.1. BANNER SLIDE INNER (HÌNH ẢNH CHÍNH) --- */
+/* Đây mới là khung hình ảnh thực sự (Layer 3 visual) */
+.banner-slide-inner {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    /* Chuyển hiệu ứng Glass/Bo góc vào đây */
+    border-radius: 24px;
+    overflow: hidden;
+    /* Cắt ảnh thừa */
+
+    background: var(--surfaceGlassStrong);
+    border: 1px solid var(--borderGlass);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+    /* Shadow nổi khối */
+}
+
+.banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Lớp phủ gradient nhẹ để text dễ đọc (nếu có) */
+.banner-glass-layer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 70%, rgba(0, 0, 0, 0.3));
+    pointer-events: none;
+}
+
+/* --- 4.3. PAGINATION (GẠCH NGANG) --- */
+.swiper-pagination {
+    bottom: 24px !important;
+}
+
+.swiper-pagination-bullet {
+    width: 32px;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.4);
+    opacity: 1;
+    margin: 0 4px !important;
+    transition: 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--brandPrimary);
+    width: 40px;
+    /* Active dài hơn */
+    box-shadow: 0 0 10px var(--brandPrimary);
+}

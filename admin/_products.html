@@ -1,0 +1,84 @@
+<div class="flex justify-between items-center mb-4">
+  <button id="add-product-btn" class="btn btn-main">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block -mt-1 mr-1" viewBox="0 0 20 20"
+      fill="currentColor">
+      <path fill-rule="evenodd"
+        d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+    </svg>
+    Thêm sản phẩm mới
+  </button>
+</div>
+
+<div class="bg-white p-6 rounded-lg shadow-md">
+  <div class="overflow-x-auto">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th scope="col" class="px-6 py-3 text-left font-thin text-muted uppercase tracking-wider">
+            Tên sản phẩm</th>
+          <th scope="col" class="px-6 py-3 text-left font-thin text-muted uppercase tracking-wider">Giá</th>
+          <th scope="col" class="px-6 py-3 text-left font-thin text-muted uppercase tracking-wider">Tags</th>
+          <th scope="col" class->Trạng thái
+          </th>
+          <th scope="col" class="px-6 py-3 text-right font-thin text-muted uppercase tracking-wider">Hành động
+          </th>
+        </tr>
+      </thead>
+      <tbody id="products-table-body" class="bg-white divide-y divide-gray-200">
+        <tr>
+          <td colspan="5" class="px-6 py-4 text-center font-thin text-primary">Đang tải dữ liệu...
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<dialog id="product-modal" class="p-0 rounded-lg shadow-xl w-full max-w-2xl">
+  <form id="product-form" class="p-6 space-y-4">
+    <div class="flex justify-between items-center">
+      <h3 id="modal-title" class="font-bold text-primary">Thêm sản phẩm mới</h3>
+      <button type="button" id="close-modal-btn" class="text-gray-400 hover:text-gray-600">&times;</button>
+    </div>
+
+    <input type="hidden" id="product-id">
+
+    <div>
+      <label for="product-name" class="block font-thin text-primary">Tên sản phẩm</label>
+      <input type="text" id="product-name" class="mt-1 w-full p-2 border rounded-lg" required>
+    </div>
+
+    <div>
+      <label for="product-price" class="block font-thin text-primary">Giá (ví dụ: 50000)</label>
+      <input type="number" id="product-price" class="mt-1 w-full p-2 border rounded-lg" required>
+    </div>
+
+    <div>
+      <label for="product-image" class="block font-thin text-primary">Link ảnh thumbnail (URL)</label>
+      <input type="url" id="product-image" class="mt-1 w-full p-2 border rounded-lg">
+    </div>
+
+    <div>
+      <label for="product-tags" class="block font-thin text-primary">
+        Tags (Phân cách bằng dấu phẩy)
+        <span class="font-thin text-muted">(vd: new, deals, thiet-ke, game)</span>
+      </label>
+      <input type="text" id="product-tags" class="mt-1 w-full p-2 border rounded-lg">
+    </div>
+
+    <div>
+      <label for="product-description" class="block font-thin text-primary">Mô tả (HTML)</label>
+      <textarea id="product-description" rows="5" class="mt-1 w-full p-2 border rounded-lg"></textarea>
+    </div>
+
+    <div class="flex items-center">
+      <input type="checkbox" id="product-published" class="h-4 w-4 text-purple-600 border-gray-300 rounded">
+      <label for="product-published" class="ml-2 block font-thin text-primary">Hiển thị (Published)</label>
+    </div>
+
+    <div class="flex justify-end gap-4 pt-4">
+      <button type="button" id="cancel-btn" class="btn btn-secondary">Hủy</button>
+      <button type="submit" id="save-product-btn" class="btn btn-main">Lưu sản phẩm</button>
+    </div>
+  </form>
+</dialog>

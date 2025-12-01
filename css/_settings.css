@@ -1,0 +1,29 @@
+.admin-page #settings-tabs-nav {
+    display: flex;
+    align-items: flex-end;
+    gap: 24px;
+    padding-bottom: 4px;
+}
+
+/* Nút tab */
+.admin-page #settings-tabs-nav .setting-tab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 6px !important;
+    line-height: 1.15 !important;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    height: auto !important;
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+/* Tab đang active */
+.admin-page #settings-tabs-nav .setting-tab.border-purple-500,
+.admin-page #settings-tabs-nav .setting-tab.text-brand,
+.admin-page #settings-tabs-nav .setting-tab.active {
+    border-bottom-color: var(--color-brandPrimary);
+    color: var(--color-brandPrimary);
+}

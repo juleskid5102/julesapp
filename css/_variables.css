@@ -1,0 +1,303 @@
+:root {
+    /* =============================
+       TOKEN RỖNG (đợi Firebase load)
+       ============================= */
+
+    /* Brand */
+    --brandPrimary: unset;
+    --brandPrimaryDark: unset;
+    --brandPrimaryLight: unset;
+    --brandPrimarySoft: unset;
+    --brandAccent: unset;
+    --brandAccentLight: unset;
+    --brandAccentDark: unset;
+
+    /* Text */
+    --textPrimary: unset;
+    --textSecondary: unset;
+    --textMuted: unset;
+    --textBrand: unset;
+    --textDanger: unset;
+    --textWarning: unset;
+    --textSuccess: unset;
+    --textOnBrand: unset;
+    --textOnDanger: unset;
+    --textOnGlass: unset;
+    --textInverse: unset;
+    --textDisabled: unset;
+
+    /* Surface */
+    --background: unset;
+    --background-gradient: unset;
+    --ambientNoise: unset;
+
+    --surface: unset;
+    --surfaceGlass: unset;
+    --surfaceGlassStrong: unset;
+    --surfaceGlassDeep: unset;
+
+    /* Blur */
+    --blurLight: unset;
+    --blurMedium: unset;
+    --blurStrong: unset;
+
+    /* Border */
+    --border: unset;
+    --borderGlass: unset;
+    --borderGlassStrong: unset;
+    --borderGlassSoft: unset;
+
+    /* Control Tokens */
+    --controlBg: unset;
+    --controlBorder: unset;
+    --controlHover: unset;
+
+    /* Icon */
+    --iconPrimary: unset;
+    --iconSecondary: unset;
+
+    /* Shadow */
+    --shadow: unset;
+    --shadowSoft: unset;
+    --shadowMedium: unset;
+    --shadowLarge: unset;
+    --shadowInner: unset;
+
+    /* Gradient Glass */
+    --glassGradientSoft: unset;
+    --glassGradientDeep: unset;
+}
+
+/* =============================
+   FONT TOKENS
+   ============================= */
+
+/* Thin */
+.font-thin-sm {
+    font-size: var(--fontThinSm-size);
+    font-weight: var(--fontThinSm-weight);
+    line-height: var(--fontThinSm-lineHeight);
+    letter-spacing: var(--fontThinSm-tracking);
+}
+
+.font-thin {
+    font-size: var(--fontThin-size);
+    font-weight: var(--fontThin-weight);
+    line-height: var(--fontThin-lineHeight);
+    letter-spacing: var(--fontThin-tracking);
+}
+
+.font-thin-lg {
+    font-size: var(--fontThinLg-size);
+    font-weight: var(--fontThinLg-weight);
+    line-height: var(--fontThinLg-lineHeight);
+    letter-spacing: var(--fontThinLg-tracking);
+}
+
+/* Normal */
+.font-normal-sm {
+    font-size: var(--fontNormalSm-size);
+    font-weight: var(--fontNormalSm-weight);
+    line-height: var(--fontNormalSm-lineHeight);
+    letter-spacing: var(--fontNormalSm-tracking);
+}
+
+.font-normal {
+    font-size: var(--fontNormal-size);
+    font-weight: var(--fontNormal-weight);
+    line-height: var(--fontNormal-lineHeight);
+    letter-spacing: var(--fontNormal-tracking);
+}
+
+.font-normal-lg {
+    font-size: var(--fontNormalLg-size);
+    font-weight: var(--fontNormalLg-weight);
+    line-height: var(--fontNormalLg-lineHeight);
+    letter-spacing: var(--fontNormalLg-tracking);
+}
+
+/* Medium */
+.font-medium-sm {
+    font-size: var(--fontMediumSm-size);
+    font-weight: var(--fontMediumSm-weight);
+    line-height: var(--fontMediumSm-lineHeight);
+    letter-spacing: var(--fontMediumSm-tracking);
+}
+
+.font-medium {
+    font-size: var(--fontMedium-size);
+    font-weight: var(--fontMedium-weight);
+    line-height: var(--fontMedium-lineHeight);
+    letter-spacing: var(--fontMedium-tracking);
+}
+
+.font-medium-lg {
+    font-size: var(--fontMediumLg-size);
+    font-weight: var(--fontMediumLg-weight);
+    line-height: var(--fontMediumLg-lineHeight);
+    letter-spacing: var(--fontMediumLg-tracking);
+}
+
+/* Bold */
+.font-bold {
+    font-size: var(--fontBold-size);
+    font-weight: var(--fontBold-weight);
+    line-height: var(--fontBold-lineHeight);
+    letter-spacing: var(--fontBold-tracking);
+}
+
+.font-bold-lg {
+    font-size: var(--fontBoldLg-size);
+    font-weight: var(--fontBoldLg-weight);
+    line-height: var(--fontBoldLg-lineHeight);
+    letter-spacing: var(--fontBoldLg-tracking);
+}
+
+/* =============================
+   TEXT COLOR TOKENS
+   ============================= */
+
+.text-primary {
+    color: var(--textPrimary);
+}
+
+.text-secondary {
+    color: var(--textSecondary);
+}
+
+.text-muted {
+    color: var(--textMuted);
+}
+
+.text-brand {
+    color: var(--textBrand);
+}
+
+.text-danger {
+    color: var(--textDanger);
+}
+
+.text-warning {
+    color: var(--textWarning);
+}
+
+.text-success {
+    color: var(--textSuccess);
+}
+
+.text-on-brand {
+    color: var(--textOnBrand);
+}
+
+.text-on-danger {
+    color: var(--textOnDanger);
+}
+
+.text-on-glass {
+    color: var(--textOnGlass);
+}
+
+.text-inverse {
+    color: var(--textInverse);
+}
+
+.text-disabled {
+    color: var(--textDisabled);
+}
+
+/* =============================
+   BACKGROUND COLOR TOKENS
+   ============================= */
+
+.bg-background {
+    background-color: var(--background);
+}
+
+.bg-surface {
+    background-color: var(--surface);
+}
+
+.bg-surface-glass {
+    background-color: var(--surfaceGlass);
+}
+
+.bg-surface-glass-strong {
+    background-color: var(--surfaceGlassStrong);
+}
+
+.bg-control {
+    background-color: var(--controlBg);
+}
+
+/* =============================
+   BUTTON TOKENS
+   ============================= */
+
+.btn-primary {
+    background-color: var(--buttonPrimaryBg);
+    color: var(--textOnBrand);
+}
+
+.btn-primary:hover {
+    background-color: var(--buttonPrimaryHover);
+}
+
+.btn-secondary {
+    background-color: var(--buttonSecondaryBg);
+    color: var(--buttonSecondaryText);
+}
+
+.btn-secondary:hover {
+    background-color: var(--buttonSecondaryHover);
+}
+
+.btn-danger {
+    background-color: var(--danger);
+    color: var(--textOnDanger);
+}
+
+.btn-warning {
+    background-color: var(--warning);
+    color: var(--textPrimary);
+}
+
+.btn-success {
+    background-color: var(--success);
+    color: var(--textInverse);
+}
+
+/* =============================
+   ICON TOKENS
+   ============================= */
+
+.icon-primary {
+    color: var(--iconPrimary);
+}
+
+.icon-secondary {
+    color: var(--iconSecondary);
+}
+
+/* =============================
+   SHADOW TOKENS
+   ============================= */
+
+.shadow {
+    box-shadow: var(--shadow);
+}
+
+.shadow-soft {
+    box-shadow: var(--shadowSoft);
+}
+
+.shadow-medium {
+    box-shadow: var(--shadowMedium);
+}
+
+.shadow-large {
+    box-shadow: var(--shadowLarge);
+}
+
+.shadow-inner {
+    box-shadow: var(--shadowInner);
+}

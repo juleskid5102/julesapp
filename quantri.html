@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang Quản Trị - Jules Studio</title>
+  <link id="favicon-link" rel="icon" type="image/png" href="">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/_settings.css">
+</head>
+
+<body class="bg-background admin-page">
+
+  <header id="header-placeholder" class="top-0 z-9999 w-full shadow-sm"></header>
+
+  <div class="page-container container mx-auto max-w-7xl p-8 pt-24">
+
+    <div class="flex gap-6">
+
+      <aside class="w-64 bg-surface rounded-lg shadow-lg p-4 space-y-2" style="height: 85vh;">
+
+        <div class="flex items-center gap-2 mb-4">
+          <img src="/assets/images/logo.png" alt="Logo" class="w-8 h-8">
+          <!-- SỬA: Dùng text-brand cho tiêu đề/highlight -->
+          <span class="font-bold text-brand">Quản trị</span>
+        </div>
+
+        <!-- SỬA: Dùng text-brand cho các link điều hướng -->
+        <button data-section="dashboard"
+          class="admin-tab w-full text-left p-2 rounded font-thin text-brand hover:bg-background">
+          Tổng quan
+        </button>
+        <button data-section="products"
+          class="admin-tab w-full text-left p-2 rounded font-thin text-brand hover:bg-background">
+          Sản phẩm
+        </button>
+        <button data-section="categories"
+          class="admin-tab w-full text-left p-2 rounded font-thin text-brand hover:bg-background">
+          Danh mục
+        </button>
+        <button data-section="banners"
+          class="admin-tab w-full text-left p-2 rounded font-thin text-brand hover:bg-background">
+          Banner
+        </button>
+        <button data-section="users"
+          class="admin-tab w-full text-left p-2 rounded font-thin text-brand hover:bg-background">
+          Người dùng
+        </button>
+        <button data-section="settings"
+          class="admin-tab w-full text-left p-2 rounded font-thin text-brand hover:bg-background">
+          Cài đặt & Dữ liệu
+        </button>
+      </aside>
+
+      <main class="flex-1 p-4 bg-surface rounded-lg shadow-lg overflow-y-auto" id="page-quantri" style="height: 85vh;">
+        <div id="admin-content">
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+  <div id="modal-container"></div>
+  <div id="toast-container"></div>
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+
+</html>

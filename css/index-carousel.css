@@ -1,0 +1,215 @@
+/* =========================================================
+   INDEX — CAROUSEL (CLEAN LAYOUT ONLY)
+   Nhiệm vụ: Chỉ lo bố cục và cuộn, KHÔNG can thiệp hiệu ứng thẻ
+   ========================================================= */
+
+/* 1. CONTAINER CHÍNH */
+.jules-film-strip {
+    position: relative;
+    width: 100%;
+    margin-bottom: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+
+    /* Cho phép thẻ con bung shadow ra ngoài nếu cần */
+    overflow: visible;
+    z-index: 1;
+}
+
+/* Khoảng cách giữa các dải */
+.jules-film-strip+.jules-film-strip {
+    margin-top: 80px;
+}
+
+/* Khi hover vào dải nào thì dải đó nổi lên trên cùng để không bị che */
+.jules-film-strip:hover {
+    z-index: 50;
+}
+
+
+/* 2. HEADER */
+.film-strip-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 4px 16px 4px;
+}
+
+.film-strip-title {
+    font-family: var(--fontFamily);
+    font-size: 22px;
+    font-weight: var(--fontBold-weight);
+    color: var(--textBrand);
+    letter-spacing: -0.5px;
+}
+
+.film-strip-link {
+    font-size: var(--fontNormal-size);
+    color: var(--textSecondary);
+    transition: color .2s;
+}
+
+.film-strip-link:hover {
+    color: var(--brandPrimary);
+}
+
+
+/* 3. GLASS PANEL */
+.film-glass-panel {
+    position: relative;
+    width: 100%;
+    background: var(--surfaceGlass);
+    backdrop-filter: blur(var(--blurMedium));
+    border: 1px solid var(--borderGlass);
+    border-radius: 24px;
+    box-shadow: var(--shadowSoft);
+
+    display: flex;
+    justify-content: center;
+
+    /* Padding trên 30, dưới 50 */
+    padding: 30px 0 50px 0;
+
+    z-index: 1;
+}
+
+
+/* 4. TRACK WRAPPER */
+.film-track-wrapper {
+    position: relative;
+    max-width: 100%;
+
+    /* Ẩn phần thừa ngang, hiện phần thừa dọc (cho shadow) */
+    overflow-x: hidden;
+    overflow-y: visible;
+
+    /* Padding đệm */
+    padding: 50px 20px;
+    margin-top: -50px;
+    margin-bottom: -70px;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    /* scroll-behavior do JS quản lý */
+
+    z-index: 10;
+}
+
+.film-track-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* 5. TRACK */
+.film-strip-track {
+    display: flex;
+    width: max-content;
+}
+
+
+/* 6. ITEM CARD (WRAPPER) - ĐÃ LÀM SẠCH */
+.film-strip-item {
+    flex: 0 0 auto;
+    position: relative;
+
+    /* Chỉ quản lý kích thước và z-index */
+    z-index: 1;
+    width: var(--card-w-mobile);
+    height: var(--card-h-mobile);
+    overflow: visible;
+    /* --- ĐÃ XÓA: transition, transform --- */
+    /* Để việc animation cho file style của card tự lo */
+}
+
+.film-strip-item .jules-product-card {
+    width: 100% !important;
+    height: 100% !important;
+    overflow: visible;
+}
+
+
+/* 7. MEDIA QUERIES */
+@media (min-width: 768px) {
+    .film-strip-track {
+        gap: 24px;
+    }
+
+    .film-strip-item {
+        width: var(--card-w-tablet);
+        height: var(--card-h-tablet);
+    }
+}
+
+@media (min-width: 1024px) {
+    .film-strip-track {
+        gap: 45px;
+    }
+
+    .film-strip-item {
+        width: var(--card-w-desktop);
+        height: var(--card-h-desktop);
+    }
+}
+
+
+/* 8. HOVER EFFECT (WRAPPER) - ĐÃ LÀM SẠCH */
+.film-strip-item:hover {
+    /* Chỉ làm nhiệm vụ đưa thẻ đang hover lên lớp trên cùng */
+    z-index: 1000;
+
+    /* --- ĐÃ XÓA: transform scale, transition-delay --- */
+    /* Không được can thiệp vào hình dáng thẻ nữa */
+}
+
+
+/* 9. MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .film-glass-panel {
+        display: block;
+        padding: 20px 0;
+    }
+
+    .film-track-wrapper {
+        width: 100% !important;
+        overflow-x: auto;
+        padding: 40px 20px;
+        margin: -40px 0;
+        justify-content: flex-start;
+    }
+
+    .nav-pill-btn {
+        display: none !important;
+    }
+}
+
+/* 10. LAZY SKELETON */
+.lazy-placeholder {
+    width: 100%;
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.02) 25%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.02) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: 24px;
+    margin-bottom: 80px;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.lazy-placeholder::after {
+    content: 'Đang tải nội dung...';
+    color: var(--textSecondary);
+    font-size: 14px;
+    opacity: 0.5;
+}

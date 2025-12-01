@@ -1,0 +1,383 @@
+/* css/components/product-cards/loaded.css */
+/* STYLE B: LOADED (Arch Shape + Floating Glass Box + Classic Colors) */
+
+:root {
+    --card-w-desktop: 230px;
+    --card-h-desktop: 288px;
+    --card-w-tablet: 190px;
+    --card-h-tablet: 240px;
+    --card-w-mobile: 150px;
+    --card-h-mobile: 188px;
+}
+
+/* 1. CONTAINER CHÍNH (DẠNG VÒM) */
+.jules-product-card {
+    position: relative;
+    width: var(--card-w-desktop);
+    height: var(--card-h-desktop);
+
+    /* Dạng vòm: Bo tròn trên, vuông dưới */
+    border-radius: 20px 20px 0 0;
+
+    /* To hơn mặc định (Scale 1.05) */
+    transform: scale(1.05);
+
+    overflow: hidden !important;
+    z-index: 1;
+    cursor: pointer;
+
+    /* Fix lỗi hiển thị */
+    -webkit-transform: scale(1.05) translateZ(0);
+    transform: scale(1.05) translateZ(0);
+
+    /* Nền và Shadow */
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Reset Inner */
+.jules-card-inner {
+    position: static;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+/* 2. ẢNH SẢN PHẨM */
+.jules-card-image-area {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 0;
+}
+
+.jules-card-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    /* Ảnh kích thước chuẩn, sẽ zoom khi hover */
+    transform: scale(1);
+
+    /* DELAY 0.7s */
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Gradient nền tối */
+.jules-card-image-area::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #000 10%, transparent 60%);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* 3. BADGES (Góc trên) */
+.badge-type {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 4px 10px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    z-index: 20;
+    text-transform: capitalize;
+}
+
+.image-meta-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 4px 10px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    z-index: 20;
+}
+
+.icon-xxs {
+    width: 12px;
+    height: 12px;
+    filter: invert(1);
+    display: block;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.meta-divider {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+
+/* 4. GLASS PANEL (HỘP KÍNH NỔI - CHUẨN CLASSIC COLORS) */
+.jules-card-content {
+    position: absolute;
+
+    /* Căn chỉnh tạo thành hộp nổi */
+    bottom: 12px;
+    left: 12px;
+    width: calc(100% - 24px);
+
+    /* Chiều cao cố định */
+    height: 165px;
+    padding: 8px 12px 12px 12px;
+    z-index: 10;
+
+    /* Hình chữ nhật */
+    border-radius: 4px;
+
+    /* --- SỬA LẠI MÀU NỀN TẠI ĐÂY --- */
+    /* Cũ: rgba(20, 20, 30, 0.75) -> Quá đậm */
+    /* Mới: rgba(30, 30, 40, 0.55) -> Trong trẻo, chuẩn Classic */
+    background: rgba(30, 30, 40, 0.55);
+
+    /* Blur giữ nguyên để làm mờ ảnh bên dưới */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    /* Viền sáng nhẹ giữ nguyên */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Giảm shadow chút cho nhẹ */
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* TEXT */
+.card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.4;
+    height: 40px;
+}
+
+.card-desc-short {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.4;
+    margin-bottom: 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: auto;
+    opacity: 1;
+}
+
+/* GIÁ & ACTIONS */
+.content-price-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    margin-bottom: 10px;
+}
+
+/* Màu giá tím chuẩn Classic */
+.price-final {
+    font-size: 15px;
+    font-weight: 700;
+    color: #b794f4;
+    text-shadow: 0 0 8px rgba(183, 148, 244, 0.5);
+}
+
+.price-original {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: line-through;
+}
+
+.badge-discount {
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+    background: #ef4444;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Nút bấm */
+.content-actions {
+    display: flex;
+    gap: 8px;
+    opacity: 1;
+    height: auto;
+    overflow: visible;
+    margin-top: 0;
+}
+
+.btn-action-primary {
+    flex: 1;
+    height: 28px;
+    border-radius: 6px;
+    /* Gradient chuẩn Classic */
+    background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 11px;
+    box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);
+    transition: filter 0.2s;
+}
+
+.btn-action-primary:hover {
+    filter: brightness(1.1);
+}
+
+.btn-action-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-action-icon:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.filter-icon {
+    width: 14px;
+    height: 14px;
+    filter: invert(1);
+    opacity: 0.9;
+}
+
+
+/* 5. HIỆU ỨNG SHEEN (DELAY 0.7s) */
+.jules-product-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: skewX(-25deg);
+    z-index: 20;
+    pointer-events: none;
+
+    /* Transition mặc định để quét về */
+    transition: left 0.7s ease-in-out;
+}
+
+
+/* 6. HOVER ACTIONS */
+.jules-product-card:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Zoom ảnh nhẹ khi Hover */
+.jules-product-card:hover .jules-card-poster {
+    transform: scale(1.1);
+    /* DELAY 0.7s */
+    transition-delay: 0.7s;
+}
+
+/* Quét sáng đi */
+.jules-product-card:hover::before {
+    left: 200%;
+    /* DELAY 0.7s */
+    transition-delay: 0.7s;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .jules-product-card {
+        width: var(--card-w-tablet);
+        height: var(--card-h-tablet);
+    }
+
+    /* CŨ: 150px -> MỚI: 155px (Khớp Classic Tablet Hover) */
+    .jules-card-content {
+        height: 155px;
+    }
+}
+
+@media (max-width: 768px) {
+    .jules-product-card {
+        width: var(--card-w-mobile);
+        height: var(--card-h-mobile);
+        border-radius: 16px 16px 0 0;
+    }
+
+   
+
+    /* CŨ: 115px -> MỚI: 140px (Khớp Classic Mobile Hover) */
+    .jules-card-content {
+        height: 140px;
+        padding: 8px;
+        bottom: 6px;
+        left: 6px;
+        width: calc(100% - 12px);
+    }
+
+    /* Vì cao lên 140px nên Mobile có thể hiện lại mô tả cho đẹp */
+    .card-desc-short {
+        display: block;
+        -webkit-line-clamp: 2;
+        margin-bottom: 4px;
+    }
+
+    .content-actions {
+        display: flex;
+    }
+
+    /* Hiện lại nút mua trên mobile luôn */
+
+    .price-original {
+        display: none;
+    }
+
+    .card-title {
+        font-size: 12px;
+        margin-bottom: 4px;
+        height: 34px;
+            line-height: 1.4;
+    }
+
+    .price-final {
+        font-size: 13px;
+    }
+}

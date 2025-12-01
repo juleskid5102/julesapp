@@ -1,0 +1,452 @@
+/* =========================================================
+   COMPONENT: JULES PRODUCT CARD (FINAL - NO MASKING)
+   ========================================================= */
+
+:root {
+    --card-w-desktop: 230px;
+    --card-h-desktop: 288px;
+    --card-w-tablet: 190px;
+    --card-h-tablet: 240px;
+    --card-w-mobile: 150px;
+    --card-h-mobile: 188px;
+}
+
+
+
+/* 1. CONTAINER CHÍNH (Vỏ giữ chỗ) */
+.jules-product-card {
+    position: relative;
+    flex-shrink: 0;
+    width: var(--card-w-desktop);
+    height: var(--card-h-desktop);
+
+    background: transparent;
+    box-shadow: none;
+
+    /* QUAN TRỌNG: Cho phép nội dung bên trong tràn ra ngoài không gian gốc */
+    overflow: visible !important;
+    z-index: 1;
+    cursor: pointer;
+    /* Fix rung lắc */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+/* 2. INNER CARD (Thẻ thực sự) */
+.jules-card-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Bo góc mềm mại */
+    border-radius: 16px 16px 0 0;
+
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    /* Bóng đổ mặc định */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+    /* Cắt ảnh bên trong theo bo góc */
+    overflow: hidden;
+
+    /* Tối ưu render để không bị mất bo góc khi transform */
+    will-change: transform, height;
+    transform: translateZ(0);
+
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform-origin: center top;
+}
+
+/* --- 1. LỚP ẢNH --- */
+.jules-card-image-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Bo góc ảnh trùng với thẻ cha để không bị lòi ra khi zoom */
+    border-radius: 16px 16px 0 0;
+    z-index: 0;
+}
+
+.jules-card-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    /* Bo góc cho chính tấm ảnh */
+    border-radius: 16px 16px 0 0;
+}
+
+/* Gradient đáy ảnh */
+.jules-card-image-area::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+    /* Bo góc cho gradient */
+    border-radius: 0 0 24px 24px;
+}
+
+/* --- BADGES & META --- */
+.badge-type {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 4px 10px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: capitalize;
+    z-index: 5;
+    transition: transform 0.3s ease;
+}
+
+.image-meta-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 4px 10px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    z-index: 5;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+}
+
+.icon-xxs {
+    width: 12px;
+    height: 12px;
+    filter: invert(1);
+    opacity: 0.9;
+    display: block;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.meta-divider {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 8px;
+    margin-top: -1px;
+}
+
+
+/* --- 3. NỘI DUNG KÍNH --- */
+.jules-card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    height: 95px;
+    padding: 12px;
+
+    background: rgba(30, 30, 40, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: height 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Tên sản phẩm */
+.card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    line-height: 1.35;
+    margin-bottom: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Mô tả (Ẩn) */
+.card-desc-short {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.4;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 0;
+    opacity: 0;
+    margin-bottom: 0;
+    transition: all 0.2s ease;
+}
+
+/* Giá (Đẩy xuống đáy) */
+.content-price-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    transition: transform 0.3s ease;
+}
+
+.price-final {
+    font-size: 15px;
+    font-weight: 700;
+    color: #b794f4;
+    text-shadow: 0 0 8px rgba(183, 148, 244, 0.5);
+}
+
+.price-original {
+    font-size: 11px;
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.badge-discount {
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+    background: #ef4444;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Nút (Ẩn) */
+.content-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 0;
+    opacity: 0;
+    margin-top: 0;
+    overflow: hidden;
+}
+
+.btn-action-primary {
+    flex: 1;
+    height: 28px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);
+}
+
+.btn-action-primary:hover {
+    filter: brightness(1.1);
+}
+
+.btn-action-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.btn-action-icon:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.filter-icon {
+    width: 14px;
+    height: 14px;
+    filter: invert(1);
+    object-fit: contain;
+}
+
+
+/* =================================================
+   HOVER EFFECTS
+   ================================================= */
+
+/* Khi hover: Đưa lên lớp trên cùng */
+.jules-product-card:hover {
+    z-index: 50;
+}
+
+/* Inner giãn nở và đổ bóng */
+.jules-product-card:hover .jules-card-inner {
+    transform: scale(1.05) translateY(-5px);
+
+    /* Tăng chiều cao để chứa nội dung mở rộng (Expand Down) */
+    height: 370px;
+
+    /* Bóng đổ sâu hơn */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.4);
+    transition-delay: 0.7s;
+}
+
+/* Ảnh zoom */
+.jules-product-card:hover .jules-card-poster {
+    transform: scale(1.15);
+    transition-delay: 0.7s;
+}
+
+/* Kính mở rộng */
+.jules-product-card:hover .jules-card-content {
+    height: 175px;
+    background: rgba(30, 30, 40, 0.4);
+    transition-delay: 0.7s;
+}
+
+/* Hiện mô tả & nút */
+.jules-product-card:hover .card-desc-short {
+    height: 32px;
+    opacity: 1;
+    margin-bottom: 6px;
+    transition-delay: 0.7s;
+}
+
+.jules-product-card:hover .content-actions {
+    height: 28px;
+    opacity: 1;
+    margin-top: 10px;
+    transition-delay: 0.7s;
+}
+
+/* Badge bay nhẹ */
+.jules-product-card:hover .badge-type {
+    transform: translate(6px, -14px);
+    transition-delay: 0.7s;
+}
+
+.jules-product-card:hover .image-meta-badge {
+    transform: translate(-6px, -14px);
+    transition-delay: 0.7s;
+}
+
+/* 1. Laptop & Tablet (Màn hình < 1024px) */
+@media (max-width: 1024px) {
+    .jules-product-card {
+        width: var(--card-w-tablet);
+        height: var(--card-h-tablet);
+    }
+
+    /* Giảm chiều cao kính khi chưa hover */
+    .jules-card-content {
+        height: 85px;
+        /* Giảm từ 95px */
+        padding: 10px;
+    }
+
+    /* Giảm chiều cao mở rộng khi hover */
+    .jules-product-card:hover .jules-card-inner {
+        height: 310px;
+        /* Giảm từ 370px */
+    }
+
+    .jules-product-card:hover .jules-card-content {
+        height: 155px;
+        /* Giảm từ 175px */
+    }
+
+    /* Font chữ nhỏ hơn xíu */
+    .card-title {
+        font-size: 13px;
+    }
+
+    .price-final {
+        font-size: 14px;
+    }
+}
+
+/* 2. Mobile (Màn hình < 768px) */
+@media (max-width: 768px) {
+    .jules-product-card {
+        width: var(--card-w-mobile);
+        height: var(--card-h-mobile);
+    }
+
+    .jules-card-content {
+        height: 80px;
+        padding: 8px;
+    }
+
+    /* Mobile thường không hover, nhưng nếu chạm vào thì mở rộng ít hơn */
+    .jules-product-card:active .jules-card-inner,
+    .jules-product-card:hover .jules-card-inner {
+        height: 260px;
+    }
+
+    .jules-product-card:active .jules-card-content,
+    .jules-product-card:hover .jules-card-content {
+        height: 140px;
+    }
+
+    /* Ẩn mô tả trên mobile cho gọn */
+    .card-desc-short,
+    .jules-product-card:hover .card-desc-short {
+        display: none;
+    }
+
+    .card-title {
+        font-size: 12px;
+        margin-bottom: 2px;
+    }
+
+    .price-final {
+        font-size: 13px;
+    }
+
+    .price-original {
+        display: none;
+    }
+
+    /* Ẩn giá gốc nếu chật */
+
+    /* Badge nhỏ lại */
+    .badge-type,
+    .image-meta-badge {
+        font-size: 8px;
+        padding: 2px 6px;
+        top: 8px;
+    }
+
+    .badge-type {
+        right: 8px;
+    }
+
+    .image-meta-badge {
+        left: 8px;
+    }
+}

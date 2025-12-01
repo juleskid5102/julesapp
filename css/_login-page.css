@@ -1,0 +1,232 @@
+/* === CSS CHO TRANG ĐĂNG NHẬP MỚI === */
+
+/* Class .hidden (Nếu Tailwind chưa kịp tải) */
+.hidden {
+    display: none;
+}
+
+/* Tiêu đề "Đăng nhập" (nét mảnh, căn giữa) */
+.login-title {
+    font-size: 1.5rem;
+    /* 24px */
+    font-weight: 300;
+    /* font-light */
+    width: 100%;
+    text-align: center;
+    color: var(--color-textPrimary);
+    /* SỬA: Bỏ #1F2937 */
+    margin-bottom: 0rem;
+    /* mb-6 */
+}
+
+.max-w-md.w-full.bg-white.p-8.rounded-lg.shadow-lg {
+    padding-top: 1rem !important;
+    /* giảm từ 2rem (32px) xuống 1rem (16px) */
+}
+
+/* Định dạng ô input */
+.login-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    /* py-3 px-4 */
+    border-radius: var(--border-radius);
+    /* Giữ lại, vì nó là layout */
+    border: 1px solid var(--color-border);
+    /* SỬA: Bỏ #e0e0e0 */
+    transition: all 0.2s ease;
+}
+
+.login-input:focus {
+    outline: none;
+    border-color: var(--color-brandPrimary);
+    /* SỬA: Bỏ --color-primary */
+    box-shadow: 0 0 0 1px var(--color-brandPrimary);
+    /* SỬA: Bỏ --color-primary */
+}
+
+/* Container cho icon "mắt" */
+.password-container {
+    position: relative;
+}
+
+.password-toggle-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 2.5rem;
+    /* w-10 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-textMuted);
+    /* SỬA: Bỏ #9CA3AF */
+    cursor: pointer;
+}
+
+.password-toggle-icon:hover {
+    color: var(--color-textSecondary);
+    /* SỬA: Bỏ #4B5563 */
+}
+
+/* Nút Đăng nhập/Đăng ký chính */
+.btn-primary-login {
+    width: 100%;
+    padding: 0.75rem;
+    /* py-3 */
+    border-radius: var(--border-radius);
+    /* Giữ lại, vì nó là layout */
+    color: white;
+    /* Giữ lại vì nút này là btn-primary */
+    font-weight: 600;
+    /* font-semibold */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    /* shadow-md */
+    background-color: var(--color-buttonPrimaryBg);
+    /* SỬA: Bỏ --color-primary */
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary-login:hover {
+    background-color: var(--color-buttonPrimaryHover);
+    /* SỬA: Dùng biến hover */
+    transform: translateY(-1px);
+}
+
+/* Nút Mạng xã hội */
+.btn-social {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    /* py-3 */
+    border-radius: var(--border-radius);
+    /* Giữ lại, vì nó là layout */
+    border: 1px solid var(--color-border);
+    /* SỬA: Bỏ #e0e0e0 */
+    color: var(--color-textPrimary);
+    /* SỬA: Bỏ #374151 */
+    font-weight: 600;
+    /* font-semibold */
+    background-color: white;
+    /* Giữ lại vì đây là btn-social, không phải surface */
+    transition: background-color 0.2s ease, box-shadow 0.1s ease;
+}
+
+.btn-social:hover {
+    background-color: var(--color-background);
+    /* SỬA: Bỏ #f9fafb */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Dấu gạch ngang "HOẶC" */
+.or-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.75rem;
+    /* my-6 */
+    margin-bottom: 0.75rem;
+}
+
+.or-separator::before,
+.or-separator::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--color-border);
+    /* SỬA: Bỏ #E5E7EB */
+}
+
+.or-separator span {
+    padding-left: 1rem;
+    /* px-4 */
+    padding-right: 1rem;
+    font-size: 0.875rem;
+    /* text-sm */
+    color: var(--color-textSecondary);
+    /* SỬA: BBỏ #6B7280 */
+}
+
+/* === BANNER FULL WIDTH + FORM CHỒNG LÊN === */
+.banner-background {
+    position: relative;
+    width: 100%;
+    height: 800px;
+    overflow: hidden;
+}
+
+.banner-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* Form nổi chồng lên banner */
+.form-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-overlay .shadow-lg {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Áp dụng cho form nổi bên phải */
+.form-overlay-right {
+    position: absolute;
+    top: 80px;
+    /* neo form từ trên xuống, không căn giữa nữa */
+    right: 10%;
+    width: 100%;
+    max-width: 400px;
+    animation: fadeInRight 0.8s ease forwards;
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+        /* chỉ dịch ngang, không dịch dọc */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Hiệu ứng bóng mượt hơn */
+.form-overlay-right .shadow-lg {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* RESPONSIVE (mobile) */
+@media (max-width: 768px) {
+    .form-overlay-right {
+        position: static;
+        transform: none;
+        margin: 2rem auto;
+        right: auto;
+        animation: fadeInMobile 0.6s ease forwards;
+    }
+
+    @keyframes fadeInMobile {
+        0% {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}

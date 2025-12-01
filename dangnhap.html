@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập & Đăng ký - Jules Studio</title>
+    <link id="favicon-link" rel="icon" type="image/png" href="">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <link href="/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/_login-page.css">
+    <script type="module" src="/js/app.js"></script>
+</head>
+
+<body class="bg-background">
+
+    <header id="header-placeholder" class="top-0 z-9999 w-full shadow-sm"></header>
+
+    <main id="page-dangnhap" class="relative">
+
+        <div class="banner-background">
+            <img src="/assets/images/banner.png" alt="Banner Jules Studio">
+        </div>
+
+        <div class="form-overlay-right">
+            <div class="max-w-md w-full bg-surface p-8 rounded-lg shadow-lg">
+
+                <div id="login-form-container">
+                    <h2 class="login-title text-center font-bold text-brand">
+                        Đăng nhập</h2>
+
+                    <div class="space-y-4 mt-6">
+                        <div>
+                            <input id="login-email" type="email" placeholder="Email hoặc Số điện thoại"
+                                class="login-input">
+                        </div>
+
+                        <div class="relative password-container">
+                            <input id="login-password" type="password" placeholder="Mật khẩu" class="login-input pr-10">
+                            <button id="password-toggle-icon" class="password-toggle-icon">
+                                <img id="icon-eye" src="/assets/icons/ui/eye.svg" alt="Hiện mật khẩu"
+                                    class="h-5 w-5 text-muted hidden">
+                                <img id="icon-eye-off" src="/assets/icons/ui/eye-closed.svg" alt="Ẩn mật khẩu"
+                                    class="h-5 w-5 text-muted">
+                            </button>
+                        </div>
+
+                        <div>
+                            <button id="login-submit-btn" class="w-full py-3 rounded-md font-bold btn-primary">ĐĂNG
+                                NHẬP</button>
+                        </div>
+                    </div>
+
+                    <div class="text-right mt-4">
+                        <a href="#" id="forgot-password-link"
+                            class="text-sm font-medium text-link hover:text-link-hover">Quên mật khẩu?</a>
+                    </div>
+                </div>
+
+                <div id="register-form-container" class="hidden">
+                    <h2 class="login-title text-center font-bold text-brand">
+                        Đăng ký</h2>
+
+                    <div class="space-y-4 mt-6">
+                        <div>
+                            <button id="register-submit-btn" class="w-full py-3 rounded-md font-bold btn-primary">ĐĂNG
+                                KÝ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="or-separator">
+                    <span class="bg-surface px-2 text-muted">HOẶC</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <button id="facebook-login-btn"
+                        class="w-full flex items-center justify-center py-3 rounded-md font-bold btn-secondary">
+                        <img src="/assets/icons/brands/facebook.svg" alt="FB" class="w-5 h-5 mr-3">
+                        Facebook
+                    </button>
+
+                    <button id="google-login-btn"
+                        class="w-full flex items-center justify-center py-3 rounded-md font-bold btn-secondary">
+                        <img src="/assets/icons/brands/google.svg" alt="GG" class="w-5 h-5 mr-3">
+                        Google
+                    </button>
+                </div>
+
+                <div class="text-center mt-6">
+                    <p id="toggle-to-register" class="text-sm text-secondary">
+                        Bạn mới biết đến Jules Studio?
+                        <a href="#" id="show-register-form" class="font-medium text-link hover:text-link-hover">Đăng
+                            ký</a>
+                    </p>
+
+                    <p id="toggle-to-login" class="text-sm text-secondary hidden">
+                        Bạn đã có tài khoản?
+                        <a href="#" id="show-login-form" class="font-medium text-link hover:text-link-hover">Đăng
+                            nhập</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <div id="footer-placeholder"></div>
+
+    <div id="toast-container"
+        class="fixed bottom-5 right-5 z-[100] p-4 rounded-lg text-inverse shadow-lg transition-opacity duration-300 opacity-0">
+        <span id="toast-message"></span>
+    </div>
+
+    <div id="modal-container" class="fixed inset-0 z-50 hidden items-center justify-center">
+    </div>
+
+</body>
+
+</html>

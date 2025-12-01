@@ -1,0 +1,146 @@
+/* =========================================================
+   COMPONENT: ARROW NAVIGATION (NETFLIX PILL STYLE)
+   File: /css/components/arrow-nav.css
+   Usage: class="nav-pill-btn prev" hoặc "nav-pill-btn next"
+   ========================================================= */
+
+/* 1. BASE STYLE (Khung nút) */
+.nav-pill-btn {
+    /* Định vị & Layout */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Kích thước mặc định (Dùng cho Banner lớn) */
+    width: 25px;
+    height: 140px;
+
+    /* Hình dáng viên thuốc */
+    border-radius: 8px;
+
+    /* Glass Material (Kính mờ) */
+    background: var(--surfaceGlassStrong, rgba(255, 255, 255, 0.8));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    /* Border & Shadow */
+    border: 1px solid var(--borderGlass, rgba(255, 255, 255, 0.2));
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+
+    /* Reset nút mặc định */
+    outline: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* 2. VẼ MŨI TÊN (Dùng CSS thuần, không cần SVG/Icon) */
+.nav-pill-btn::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+
+    /* Nét vẽ mũi tên */
+    border-top: 2px solid var(--brandPrimary, #6366f1);
+    border-right: 2px solid var(--brandPrimary, #6366f1);
+    border-radius: 1px;
+}
+
+/* Nếu bên trong nút có thẻ SVG cũ thì ẩn đi */
+.nav-pill-btn svg {
+    display: none !important;
+}
+
+/* 3. HƯỚNG MŨI TÊN (Direction) */
+
+/* Nút PREV (Trái) */
+.nav-pill-btn.prev {
+    left: 0;
+    /* Mặc định sát lề trái */
+}
+
+.nav-pill-btn.prev::after {
+    transform: rotate(-135deg);
+    margin-left: 4px;
+    /* Căn chỉnh quang học */
+}
+
+/* Nút NEXT (Phải) */
+.nav-pill-btn.next {
+    right: 0;
+    /* Mặc định sát lề phải */
+}
+
+.nav-pill-btn.next::after {
+    transform: rotate(45deg);
+    margin-right: 4px;
+    /* Căn chỉnh quang học */
+}
+
+/* 4. HOVER EFFECT (Hiệu ứng tương tác) */
+.nav-pill-btn:not(:disabled):hover {
+    background: var(--surface, #fff);
+    border-color: var(--brandPrimaryLight, #818cf8);
+
+    /* Phóng to nhẹ */
+    transform: translateY(-50%) scale(1.05);
+
+    /* Shadow phát sáng màu thương hiệu */
+    box-shadow: 0 8px 20px var(--brandPrimarySoft, rgba(99, 102, 241, 0.2));
+}
+
+/* Active (Click) */
+.nav-pill-btn:not(:disabled):active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* Disabled state */
+.nav-pill-btn:disabled,
+.nav-pill-btn.swiper-button-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* =========================================================
+   VARIANTS (Biến thể kích thước)
+   ========================================================= */
+
+/* Variant: COMPACT (Dùng cho Product Carousel) 
+   Cao 100px thôi cho đỡ thô so với thẻ sản phẩm */
+.nav-pill-btn.compact {
+    height: 120px;
+}
+
+/* Variant: OUTSIDE (Đẩy ra ngoài container một chút) */
+.nav-pill-btn.outside-left {
+    left: -45px;
+}
+
+.nav-pill-btn.outside-right {
+    right: -45px;
+}
+
+/* Variant: INSIDE (Thụt vào trong một chút) */
+.nav-pill-btn.inside-left {
+    left: 20px;
+}
+
+.nav-pill-btn.inside-right {
+    right: 20px;
+}
+
+/* Responsive: Ẩn trên mobile */
+@media (max-width: 768px) {
+    .nav-pill-btn {
+        display: none !important;
+    }
+}

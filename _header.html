@@ -1,0 +1,106 @@
+<header class="header-container">
+    <div class="container mx-auto px-4">
+
+        <div class="flex items-center justify-between h-full">
+
+            <!-- LOGO + TEXT -->
+            <a href="/index.html" class="flex items-center space-x-3 flex-shrink-0">
+                <img src="{{LOGO_URL}}" class="header-logo-img rounded-xl object-cover">
+
+                <div class="flex flex-col leading-tight">
+                    <span class="font-normal textBrand">{{STUDIO_NAME_MAIN}}</span>
+                    <span class="font-thin textSecondary">{{STUDIO_SLOGAN}}</span>
+                </div>
+            </a>
+
+            <!-- SEARCH -->
+            <div class="search-wrapper-container relative">
+                <form id="header-search-form" class="search-form">
+                    <input type="text" id="header-search-input" class="search-input" placeholder="Tìm kiếm sản phẩm, dịch vụ..."
+                        autocomplete="off">
+                    <button type="submit" class="search-submit-btn" title="Tìm kiếm">
+                        <img src="{{ICON_SEARCH_URL}}" alt="Tìm" class="header-icon-img">
+                    </button>
+                </form>
+            
+                <div id="search-dropdown" class="hidden absolute top-full left-0 w-full mt-2 
+                            bg-[var(--surface)] border border-[var(--borderGlass)] 
+                            rounded-xl shadow-2xl overflow-hidden z-50 backdrop-blur-xl">
+                    <div id="search-results-list" class="max-h-[400px] overflow-y-auto"></div>
+                </div>
+            </div>
+            <!-- ACTION ICONS -->
+            <div class="header-action-icons flex items-center space-x-2 flex-shrink-0">
+
+                <!-- CART -->
+                <div class="relative">
+                    <button type="button" id="cart-toggle-btn"
+                        class="header-icon-btn p-2 btn-secondary rounded-full transition-colors" title="Giỏ hàng">
+                        <img src="{{ICON_CART_URL}}" alt="Giỏ hàng" class="header-icon-img">
+
+                        <span id="cart-badge"
+                            class="hidden absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bgDanger text-xs font-bold textOnDanger">0</span>
+                    </button>
+
+                    <div id="cart-dropdown"
+                        class="hidden absolute right-0 mt-2 w-80 sm:w-96 origin-top-right rounded-lg surface shadow-xl focus:outline-none z-50">
+                    </div>
+                </div>
+
+                <!-- NOTIFICATION -->
+                <div class="relative">
+                    <button type="button" id="notification-toggle-btn"
+                        class="header-icon-btn p-2 btn-secondary rounded-full transition-colors" title="Thông báo">
+                        <img src="{{ICON_BELL_URL}}" alt="Thông báo" class="header-icon-img">
+
+                        <span id="notification-badge"
+                            class="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bgDanger text-xs font-bold textOnDanger">
+                            {{UNREAD_COUNT}}
+                        </span>
+                    </button>
+
+                    <div id="notification-dropdown"
+                        class="hidden absolute right-0 mt-2 w-80 sm:w-96 origin-top-right rounded-lg surface shadow-xl focus:outline-none z-50">
+
+                        <div class="flex items-center justify-between border-b border-border px-4 py-2">
+                            <h3 class="font-bold textBrand">Thông báo</h3>
+
+                            <button type="button" id="mark-all-read-btn"
+                                class="flex items-center space-x-1 p-2 rounded-full btn-secondary"
+                                title="Đánh dấu tất cả là đã đọc">
+                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="max-h-96 overflow-y-auto custom-scrollbar" id="notification-list-items">
+                            <div class="p-4 pt-0 hidden" id="notification-group-new">
+                                <h4 class="text-xs font-bold textMuted my-2 px-2">Mới nhất</h4>
+                            </div>
+
+                            <div class="px-4 py-2 background hidden" id="notification-group-old">
+                                <h4 class="text-xs font-bold textMuted">Trước đó</h4>
+                            </div>
+
+                            <div class="p-4 pt-0 hidden" id="notification-group-old-list"></div>
+                            <div id="notification-empty-state" class="hidden text-center"></div>
+                        </div>
+
+                        <div class="border-t border-border background">
+                            <a href="/notifications.html"
+                                class="block py-3 text-center font-medium textBrand hover-textBrandDark rounded-b-lg">
+                                Xem thông báo trước đó
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- USER PLACEHOLDER -->
+                <div id="user-auth-placeholder"></div>
+
+            </div>
+        </div>
+    </div>
+</header>

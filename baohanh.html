@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Bảo Hành - Jules Studio</title>
+    <link id="favicon-link" rel="icon" type="image/png" href="">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script type="module" src="/js/app.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="bg-background">
+
+    <header id="header-placeholder" class="top-0 z-9999 w-full shadow-sm"></header>
+
+    <main class="container mx-auto p-4 my-6" id="page-baohanh">
+        <div class="flex flex-col md:flex-row gap-6">
+
+            <!-- SỬA: Đổi var(--color-shadow) -> var(--shadow-soft) -->
+            <!-- SỬA: Đổi h2 text-primary -> text-brand -->
+            <aside class="md:w-1/3 bg-surface p-4 rounded-lg shadow-md"
+                style="border: 1px solid var(--color-border); box-shadow: 0 2px 6px var(--shadow-soft);">
+                <h2 class="font-bold text-brand mb-4">Danh sách Khách hàng</h2>
+                <div class="mb-4">
+                    <input type="text" id="customer-search-input" placeholder="Tìm theo tên hoặc SĐT..." class="w-full px-3 py-2 border rounded-lg focus:outline-none 
+                                  bg-background text-primary border-[var(--color-border)] 
+                                  focus:ring-2 focus:ring-[var(--color-brandAccent)]">
+                </div>
+                <div id="customer-list-container" class="h-96 overflow-y-auto space-y-2">
+                    <p class="font-normal text-muted text-center">Đang tải danh sách...</p>
+                </div>
+                <button id="add-customer-btn" class="mt-4 w-full py-2 px-4 rounded-md font-bold btn-success">
+                    + Thêm Khách hàng
+                </button>
+            </aside>
+
+            <!-- SỬA: Đổi var(--color-shadow) -> var(--shadow-soft) -->
+            <section class="md:w-2/3 bg-surface p-6 rounded-lg shadow-md"
+                style="border: 1px solid var(--color-border); box-shadow: 0 2px 6px var(--shadow-soft);">
+                <div id="customer-detail-container">
+                    <p class="text-center font-normal text-muted">Chọn một khách hàng từ danh sách bên trái để xem thông
+                        tin.</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <!-- SỬA: Xóa class bg-black bg-opacity-50 -->
+    <div id="modal-container" class="fixed inset-0 z-50 hidden items-center justify-center"
+        aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    </div>
+
+    <!-- SỬA: Đổi text-white -> text-inverse -->
+    <div id="toast-container"
+        class="fixed bottom-5 right-5 z-[100] p-4 rounded-lg bg-success text-inverse shadow-lg opacity-0 transition-opacity duration-300">
+        <span id="toast-message"></span>
+    </div>
+
+</body>
+
+</html>
